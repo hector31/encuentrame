@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Encuentrame</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="ingresar">INGRESAR</string>
+    <string name="registrarse">REGISTRARSE</string>
+    <string name="usuario">USUARIO</string>
+    <string name="correo">CORREO</string>
+    <string name="contraseña">CONTRASEÑA</string>
+    <string name="recontraseña">REPETIR CONTRASEÑA</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="errorCampos">ERROR FALTA LLENAR ALGUN CAMPO</string>
+    <string name="errorContraseñas">NO COINCIDEN CONTRASEÑAS</string>
+    <string name="title_activity_main_drawer">MainActivityDrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="invitacion">INVITAR A GRUPO</string>
+
+    <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pricipaltittle">ENCUENTRAME</string>
+    <string name="generear">GENERAR CODIGO</string>
+    <string name="EnviarCodigo">ENVIAR CODIGO</string>
+    <string name="title_activity_mis_grupos_drawer">MisGruposActivityDrawer</string>
+    <string name="ejemplo">AMIGOS</string>
+    <string name="title_activity_crear_grupo_drawer">CrearGrupoActivityDrawer</string>
+    <string name="gruponombre">NOMBRE DE GRUPO</string>
+    <string name="creargrupo">CREAR GRUPO</string>
+    <string name="title_activity_unirse_grupo_drawer">UnirseGrupoActivityDrawer</string>
+    <string name="ingresecodigo">INGRESE CODIGO</string>
+    <string name="unirse">UNIRSE A GRUPO</string>
+    <string name="title_activity_alertas_drawer">AlertasActivityDrawer</string>
+    <string name="bateriabaja">BATERIA BAJA</string>
+    <string name="lugaresmarcados">LUGARES MARCADOS</string>
+    <string name="alerta">Cofiguracion de alertas</string>
+    <string name="nuevogrupo">Crear un grupo</string>
+    <string name="ingreso">Ingreso</string>
+    <string name="facebook_app_id">1883508385255692</string>
+    <string name="cerrar">CERRAR SESION</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="id">ID</string>
+    <string name="salir">CERRAR SESION</string>
+    <string name="login">INGRESO</string>
+    <string name="main">ENCUENTRAME</string>
+    <string name="misgrupos">MIS GRUPOS</string>
+    <string name="registro">REGISTRO</string>
+    <string name="ungrupo">UNIRSE A UN GRUPO</string>
+    <string name="ejemplo1">EJEMPLO AMIGOS</string>
+    <string name="ejemplo2">FAMILIA</string>
+</resources>

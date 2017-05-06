@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/principal"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Menu Principal" />
+        <item
+            android:id="@+id/misgrupos"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Mis Grupos" />
+        <item
+            android:id="@+id/creargrupo"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="Crear Grupo" />
+        <item
+            android:id="@+id/unirsegrupo"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="Unirse a un Grupo" />
+    </group>
+
+    <item android:title="Usuario">
+        <menu>
+            <item
+                android:id="@+id/alertas"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Alertas" />
+            <item
+                android:id="@+id/salir"
+                android:icon="@android:drawable/ic_lock_power_off"
+                android:title="Salir" />
+        </menu>
+    </item>
+
+</menu>

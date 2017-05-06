@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.encuentrame">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".IngresoActivity" />
+        <activity
+            android:name=".MainActivityDrawer"
+            android:label="@string/title_activity_main_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC4Lw0sfp28RyBnSnDUCxenthA2wMP25D8" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".MisGruposActivityDrawer"
+            android:label="@string/title_activity_mis_grupos_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CrearGrupoActivityDrawer"
+            android:label="@string/title_activity_crear_grupo_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UnirseGrupoActivityDrawer"
+            android:label="@string/title_activity_unirse_grupo_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AlertasActivityDrawer"
+            android:label="@string/title_activity_alertas_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LoginFaceActivity">
+
+        </activity>
+        <activity android:name=".PruebaSalidaActivity"></activity>
+    </application>
+
+</manifest>
