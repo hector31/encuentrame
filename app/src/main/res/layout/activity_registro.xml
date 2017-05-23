@@ -13,7 +13,7 @@
     android:text="@string/usuario"
     android:gravity="center"
     android:layout_margin="10dp"
-    android:textSize="15sp"
+    android:textSize="10sp"
     android:textColor="@color/black"
 
     />
@@ -29,7 +29,7 @@
     android:layout_margin="5dp"
     android:text="@string/correo"
     android:gravity="center"
-    android:textSize="15sp"
+    android:textSize="10sp"
     android:textColor="@color/black"
 
     />
@@ -47,7 +47,7 @@
 
     android:text="@string/contraseña"
     android:gravity="center"
-    android:textSize="15sp"
+    android:textSize="10sp"
     android:textColor="@color/black"
 
     />
@@ -64,7 +64,7 @@
     android:text="@string/recontraseña"
     android:gravity="center"
     android:layout_margin="5dp"
-    android:textSize="15sp"
+    android:textSize="10sp"
     android:textColor="@color/black"
 
     />
@@ -86,7 +86,7 @@
       android:layout_width="120dp"
       android:layout_gravity="center"
       android:layout_margin="10dp"
-      android:textSize="15sp"
+      android:textSize="10sp"
       android:id="@+id/bRegistrarse"
       android:onClick="onClick"
       android:text="@string/registrarse"
@@ -97,13 +97,36 @@
       android:layout_width="120dp"
       android:layout_gravity="center"
       android:layout_margin="5dp"
-      android:textSize="15sp"
+      android:textSize="10sp"
       android:onClick="onClick"
       android:id="@+id/bCancelar"
       android:text="@string/cancelar"
       android:textColor="@color/gray"
       android:background="@color/white"
       android:layout_height="wrap_content" />
+
+
+ </LinearLayout>
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:gravity="center"
+     >
+  <com.facebook.login.widget.LoginButton
+      android:id="@+id/login_button"
+      android:layout_width="wrap_content"
+      android:layout_height="100dp"
+      android:gravity="center"
+      android:layout_gravity="center"
+       />
+  <com.google.android.gms.common.SignInButton
+      android:id="@+id/sign_in_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      />
+
 
  </LinearLayout>
 

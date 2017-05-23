@@ -26,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistroActivity" />
@@ -58,8 +59,8 @@
             android:name=".AlertasActivityDrawer"
             android:label="@string/title_activity_alertas_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginFaceActivity">
 
+        <activity android:name=".LoginFaceActivity">
         </activity>
         <activity android:name=".PruebaSalidaActivity"></activity>
     </application>

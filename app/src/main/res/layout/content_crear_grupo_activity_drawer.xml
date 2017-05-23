@@ -12,6 +12,14 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/ultimoId"
+    android:gravity="center"
+    android:textColor="@color/black"
+    android:textSize="20dp"
+    />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:text="@string/gruponombre"
     android:gravity="center"
     android:textColor="@color/black"
@@ -19,6 +27,7 @@
     />
 <EditText
     android:layout_width="match_parent"
+    android:id="@+id/eNombreGrupo"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
@@ -26,6 +35,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/bCrearGrupo"
+        android:onClick="onClick"
         android:text="@string/creargrupo"
 
         />

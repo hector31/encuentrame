@@ -8,22 +8,13 @@
     android:orientation="vertical"
     tools:context="com.example.android.encuentrame.MisGruposActivityDrawer"
     tools:showIn="@layout/app_bar_mis_grupos_activity_drawer">
-<TextView
+
+<ListView
+    android:id="@+id/list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/ejemplo1"
-    android:gravity="center"
-    android:textSize="20sp"
-    android:textColor="@color/black"
-    android:layout_margin="20dp"
-     />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/ejemplo2"
-    android:gravity="center"
-    android:textSize="20sp"
-    android:textColor="@color/black"
-    android:layout_margin="20dp"
-     />
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="8dp"
+    app:layout_editor_absoluteY="8dp">
+
+</ListView>
 </LinearLayout>
