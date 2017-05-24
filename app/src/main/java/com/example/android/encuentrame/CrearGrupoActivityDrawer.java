@@ -172,15 +172,16 @@ import static android.R.id.list;
         myRef=database.getReference("Grupos");
 
         NombreGrupo = eNombreGrupo.getText().toString();
-        info= new infogrupo(NombreGrupo,usuario,numeroUsuarios);
+
        switch (idB) {
            case R.id.bCrearGrupo:
                String key = myRef.push().getKey();
                myRef.child(key).child("info de grupo").child("nombreGrupo").setValue(NombreGrupo);
                myRef.child(key).child("info de grupo").child("numeroUsuarios").setValue("1");
 
-               myRef.child(key).child("info de grupo").child("usuario1").child("nombre").setValue(usuario);
-               myRef.child(key).child("info de grupo").child("usuario1").child("id").setValue("1");
+
+               myRef.child(key).child("info de grupo").child("usuarios").child(usuario).child("id").setValue("1");
+           //    myRef.child(key).child("info de grupo").child("usuarios").child("pepito").child("id").setValue("1");
                clear();
                cont++;
 

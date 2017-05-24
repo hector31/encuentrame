@@ -111,10 +111,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             lng = location.getLongitude();
             agregarMarcador(lat, lng);
             if(recibeDato!= null) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                usuario = user.getDisplayName();
                 Log.d("datorecibido = ", recibeDato);
-                myRef=database.getReference().child("Grupos").child(recibeDato).child("info de grupo").child("usuario");
-                myRef.child(recibeDato).child("info de grupo").child("latitud").setValue(lat);
-                myRef.child(recibeDato).child("info de grupo").child("longitud").setValue(lng);
+                myRef=database.getReference().child("Grupos").child(recibeDato).child("info de grupo").child("usuarios").child(usuario);
+                myRef.child("latitud").setValue(lat);
+                myRef.child("longitud").setValue(lng);
 
             }
         }

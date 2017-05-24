@@ -51,7 +51,7 @@ public class MisGruposActivityDrawer extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setTitle( getResources().getString(R.string.misgrupos));
+        setTitle(getResources().getString(R.string.misgrupos));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,64 +63,63 @@ public class MisGruposActivityDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        usuario=user.getDisplayName();
-        list=(ListView) findViewById(R.id.list);
+        usuario = user.getDisplayName();
+        list = (ListView) findViewById(R.id.list);
+       final int i=0;
 
-        final ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mArraylistKey);
-        final ArrayAdapter<String> adaptador2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mArraylistKey2);
+        final ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArraylistKey);
+        final ArrayAdapter<String> adaptador2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArraylistKey2);
         list.setAdapter(adaptador);
-        myRef2=database2.getReference().child("Grupos");
+        myRef2 = database2.getReference().child("Grupos");
 
-        myRef2.orderByChild("info de grupo/usuario0/nombre").equalTo(usuario).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(final DataSnapshot dataSnapshot)  {
-                       /* ArrayList<Contactos> Lista = new ArrayList<Contactos>();
-                        for(DataSnapshot userSnapshot: dataSnapshot.getChildren()){
-                            Lista.add(userSnapshot.getValue(Contactos.class));
+                myRef2.orderByChild("info de grupo/usuarios/"+usuario).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(final DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                            if (dsp.child("info de grupo").child("usuarios").child(usuario).exists()) {
+                                final String value = dsp.getKey();
+                                mArraylistKey2.add(value);
+                                Log.d("llave:", value + "\n");
+
+                                adaptador2.notifyDataSetChanged();
+                                myRef2.orderByChild(value + "info de grupo/nombreGrupo").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot2) {
+
+                                        final String s = dataSnapshot2.child(value).child("info de grupo/nombreGrupo").getValue(String.class);
+                                        mArraylistKey.add(s);
+                                        adaptador.notifyDataSetChanged();
+                                        Log.d("grupo prueba :", s + "\n");
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                        // ...
+                                    }
+                                });
+
+
+                            }
                         }
-                        lo anterior es para crear una lista de los datos
-                        */
+                        }
 
-                for(DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    final String value = dsp.getKey();
-                    mArraylistKey2.add(value);
-                    Log.d("llave:",value+"\n");
-                    adaptador2.notifyDataSetChanged();
-                    myRef2.orderByChild(value+"info de grupo/nombreGrupo").addListenerForSingleValueEvent(new ValueEventListener() {
+
                         @Override
-                        public void onDataChange(DataSnapshot dataSnapshot2) {
-
-                            final String s = dataSnapshot2.child(value).child("info de grupo/nombreGrupo").getValue(String.class);
-                            mArraylistKey.add(s);
-                            adaptador.notifyDataSetChanged();
-                            Log.d("grupo prueba :",s+"\n");
+                        public void onCancelled (DatabaseError databaseError){
 
                         }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // ...
-                        }
-                    });
-                }
-
-                    }
-
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+                });
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                String pos=adaptador2.getItem(position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String pos = adaptador2.getItem(position);
 
-                Toast.makeText(getApplicationContext(),"position = " +  pos, Toast.LENGTH_SHORT).show();
-                intent =new Intent(MisGruposActivityDrawer.this,MainActivityDrawer.class);
-                intent.putExtra("key",adaptador2.getItem(position));
+                Toast.makeText(getApplicationContext(), "position = " + pos, Toast.LENGTH_SHORT).show();
+                intent = new Intent(MisGruposActivityDrawer.this, MainActivityDrawer.class);
+                intent.putExtra("key", adaptador2.getItem(position));
                 startActivity(intent);
             }
         });
