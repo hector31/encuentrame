@@ -10,6 +10,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -24,8 +25,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -48,8 +55,10 @@ public class MainActivityDrawer extends AppCompatActivity
     private ViewPager mViewPager;
     Intent intent;
     String key;
-    String datoFragment ;
+    String datoFragment;
     TextView tName,tUid,tCorreo;
+    final FirebaseDatabase database=FirebaseDatabase.getInstance();
+    DatabaseReference myRef=database.getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,13 +97,18 @@ public class MainActivityDrawer extends AppCompatActivity
 
         tName.setText(user.getDisplayName());
         tCorreo.setText((user.getEmail()));
-       Bundle parametros = this.getIntent().getExtras();
+        Bundle bundle = new Bundle();
+        bundle.putString("edttext", "From Activity");
+        Bundle parametros = this.getIntent().getExtras();
+
         if(parametros!= null) {
             key = parametros.getString("key");
             datoFragment = parametros.getString("key");
-            Log.d("key = ", key);
+            Log.d("estose recibe = ", datoFragment);
+
 
         }
+
     }
 
     @Override
@@ -120,6 +134,7 @@ public class MainActivityDrawer extends AppCompatActivity
         }if (id == R.id.misgrupos) {
             intent = new Intent(MainActivityDrawer.this, MisGruposActivityDrawer.class);
             startActivity(intent);
+
         } else if (id == R.id.creargrupo) {
             intent = new Intent(MainActivityDrawer.this, CrearGrupoActivityDrawer.class);
             startActivity(intent);
@@ -155,6 +170,8 @@ public class MainActivityDrawer extends AppCompatActivity
             switch (position) {
                 case 0:
                     MapFragment tab1 = new MapFragment();
+
+
                     return tab1;
                 case 1:
                     InvitacionFragment tab2 = new InvitacionFragment();
@@ -186,4 +203,10 @@ public class MainActivityDrawer extends AppCompatActivity
         return datoFragment;
 
     }
+    public void setDataFragment(String datoFragment){
+
+        this.datoFragment=datoFragment;
+
+    }
+
 }

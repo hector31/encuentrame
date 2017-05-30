@@ -5,19 +5,43 @@ package com.example.android.encuentrame;
  */
 
 public class infogrupo {
-    public String nombreGrupo;
-    public String usuario;
-    public String lat,lng;
-    public String numeroUsuarios;
+
+    public String id;
+    public Double lng;
+    public int lat;
 
     public infogrupo() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
-    public infogrupo(String nombreGrupo, String usuario, String numeroUsuarios) {
-        this.nombreGrupo = nombreGrupo;
-        this.usuario = usuario;
 
-        this.numeroUsuarios=numeroUsuarios;
+    public infogrupo(String id, Integer lat, Double lng) {
+        this.id = id;
+        this.lat = lat;
+        this.lng=lng;
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getLat() {
+        return lat;
+    }
+
+    public void setLat(int lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 }

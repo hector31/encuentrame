@@ -2,6 +2,7 @@ package com.example.android.encuentrame;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -38,9 +39,7 @@ public class MisGruposActivityDrawer extends AppCompatActivity
     DatabaseReference myRef2=database2.getReference();
     String usuario;
     ListView list;
-    String[] grupos;
-    String[] sistemas = {"Ubuntu", "Android", "iOS", "Windows", "Mac OSX",
-            "Google Chrome OS", "Debian", "Mandriva", "Solaris", "Unix"};
+
     public ArrayList<String> mArraylistKey = new ArrayList<>();
     public ArrayList<String> mArraylistKey2 = new ArrayList<>();
 
@@ -72,33 +71,22 @@ public class MisGruposActivityDrawer extends AppCompatActivity
         list.setAdapter(adaptador);
         myRef2 = database2.getReference().child("Grupos");
 
-                myRef2.orderByChild("info de grupo/usuarios/"+usuario).addValueEventListener(new ValueEventListener() {
+                myRef2.orderByChild("info de grupo/usuarios/"+usuario).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(final DataSnapshot dataSnapshot) {
 
                         for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                             if (dsp.child("info de grupo").child("usuarios").child(usuario).exists()) {
                                 final String value = dsp.getKey();
+                                final String nomGrupo = dataSnapshot.child(value).child("info de grupo").child("nombreGrupo").getValue(String.class);
                                 mArraylistKey2.add(value);
-                                Log.d("llave:", value + "\n");
-
+                                mArraylistKey.add(nomGrupo);
+                                //obtener aqui los nombre del grupo
+                                Log.d("la llave:", value + "\n");
+                                Log.d("la llave grupo:", nomGrupo + "\n");
+                                adaptador.notifyDataSetChanged();
                                 adaptador2.notifyDataSetChanged();
-                                myRef2.orderByChild(value + "info de grupo/nombreGrupo").addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot2) {
 
-                                        final String s = dataSnapshot2.child(value).child("info de grupo/nombreGrupo").getValue(String.class);
-                                        mArraylistKey.add(s);
-                                        adaptador.notifyDataSetChanged();
-                                        Log.d("grupo prueba :", s + "\n");
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-                                        // ...
-                                    }
-                                });
 
 
                             }
@@ -116,11 +104,16 @@ public class MisGruposActivityDrawer extends AppCompatActivity
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String pos = adaptador2.getItem(position);
+                String pos2 = adaptador.getItem(position);
 
-                Toast.makeText(getApplicationContext(), "position = " + pos, Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), "llave = " + pos +" del grupo=" +pos2, Toast.LENGTH_LONG).show();
                 intent = new Intent(MisGruposActivityDrawer.this, MainActivityDrawer.class);
                 intent.putExtra("key", adaptador2.getItem(position));
+
+                Log.d("esto se esta pasando ",adaptador2.getItem(position));
                 startActivity(intent);
+                finish();
             }
         });
 
